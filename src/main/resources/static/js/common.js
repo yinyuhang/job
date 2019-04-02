@@ -115,7 +115,6 @@ $(function () {
         if ($(node).hasClass("date")) {
             $(node).datetimepicker({
                 language:  'zh-CN',
-                format: "yyyy-mm-dd",
                 weekStart: 1,
                 todayBtn:  1,
                 autoclose: 1,
@@ -130,7 +129,18 @@ $(function () {
     $(".btn-search").click(function () {
         loadTable()
     })
-
+    
+    $("#logout").click(function () {
+        $.ajax({
+            type: "PUT",
+            url: "/user/logout",
+            data: null,
+            success: function () {
+                alert("登出成功")
+                location.href = "/login"
+            }
+        })
+    })
 })
 
 function formatDate (data, attr) {
